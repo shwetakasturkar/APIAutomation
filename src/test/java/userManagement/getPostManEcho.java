@@ -2,8 +2,8 @@ package userManagement;
 
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
-import utlis.JsonReader;
-import utlis.PropertyReader;
+import utils.JsonReader;
+import utils.PropertyReader;
 
 import java.io.IOException;
 import java.text.ParseException;

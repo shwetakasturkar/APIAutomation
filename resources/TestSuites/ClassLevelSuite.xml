@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="API Automation Session Smoke" parallel="classes" thread-count="2">
     <listeners>
-        <listener class-name="utlis.RetryListener"/>
+        <listener class-name="utils.RetryListener"/>
     </listeners>
 
     <test name="API Users TestCases">

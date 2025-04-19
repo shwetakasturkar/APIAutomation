@@ -13,11 +13,10 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
-import utlis.ExtentReport;
-import utlis.JsonReader;
-import utlis.PropertyReader;
-import utlis.SoftAssertionUtil;
+import utils.ExtentReport;
+import utils.JsonReader;
+import utils.PropertyReader;
+import utils.SoftAssertionUtil;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -29,8 +28,8 @@ import static io.restassured.RestAssured.given;
 import static junit.framework.Assert.assertEquals;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static utlis.JsonReader.getJsonArray;
-import static utlis.JsonReader.getjsondataArray;
+import static utils.JsonReader.getJsonArray;
+import static utils.JsonReader.getjsondataArray;
 
 public class getUsers extends BaseTest {
 
@@ -41,7 +40,7 @@ public class getUsers extends BaseTest {
 
     @Test
     public void getUsersData() throws IOException {
-        ExtentReport.extentlog = ExtentReport.extentreport.startTest("Validating Users","Check Response COde");
+        ExtentReport.logInfo("validateResponseBodyGetPathParam");
         String serverAddress = PropertyReader.PropertyReader("config.properties", "server");
         System.out.println(serverAddress);
         given().when().get(serverAddress)
@@ -60,7 +59,7 @@ public class getUsers extends BaseTest {
     @Test
     public void validateGetResponseBodyContains() {
 
-        ExtentReport.extentlog = ExtentReport.extentreport.startTest("Verifying Response Body","with Status Code")
+        ExtentReport.logInfo("validateResponseBodyGetPathParam");
 ;        RestAssured.baseURI = "https://jsonplaceholder.typicode.com/";
 
         Response response = given().when().get("/todos/");
@@ -105,7 +104,7 @@ public class getUsers extends BaseTest {
 
     @Test
     public void validateGetResponseBodyQueryParams()  {
-        ExtentReport.extentlog = ExtentReport.extentreport.startTest("Verfying Response from Query Params", "ValidateStatusCode");
+        ExtentReport.logInfo("validateResponseBodyGetPathParam");
 
         RestAssured.baseURI = "https://reqres.in/api/";
 

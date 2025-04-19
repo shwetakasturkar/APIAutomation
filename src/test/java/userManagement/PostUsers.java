@@ -201,6 +201,7 @@ public class PostUsers {
         BangloreCR.setTemp("40");
         List<CityRequest> crst = new ArrayList<>();
         crst.add(DelhiCR);
+        crst.add(BangloreCR);
         postReqBody.setCityRequestBody(crst);
 
         RestAssured.baseURI = "https://reqres.in/api/users";
