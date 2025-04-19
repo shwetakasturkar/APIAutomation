@@ -1,7 +1,11 @@
 package core;
 
 
+<<<<<<< HEAD
 
+=======
+import com.aventstack.extentreports.Status;
+>>>>>>> e9a8626 (NewBranchTest)
 import helper.BaseTestHelper;
 import org.testng.ITestContext;
 import org.testng.ITestResult;

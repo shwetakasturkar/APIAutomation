@@ -7,7 +7,11 @@ import io.restassured.module.jsv.JsonSchemaValidator;
 import org.testng.annotations.Test;
 import utils.ExtentReport;
 import utils.PropertyReader;
+<<<<<<< HEAD
 import static io.restassured.module.jsv.JsonSchemaValidator.*;
+=======
+
+>>>>>>> e9a8626 (NewBranchTest)
 import java.io.File;
 import java.io.IOException;
 

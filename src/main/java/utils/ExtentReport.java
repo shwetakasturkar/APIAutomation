@@ -30,8 +30,11 @@ public class ExtentReport {
     public static void createTest(String testName) {
         ExtentTest test = extentreport.createTest(testName);
         extentlog.set(test);
+<<<<<<< HEAD
         test.log(Status.PASS,"TestPassed is"+testName);
         
+=======
+>>>>>>> e9a8626 (NewBranchTest)
     }
 
 
