@@ -30,6 +30,8 @@ public class ExtentReport {
     public static void createTest(String testName) {
         ExtentTest test = extentreport.createTest(testName);
         extentlog.set(test);
+        test.log(Status.PASS,"TestPassed is"+testName);
+        
     }
 
 

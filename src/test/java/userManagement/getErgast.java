@@ -1,10 +1,11 @@
 package userManagement;
 
 import io.restassured.response.Response;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
-
+@Listeners(utils.RetryListener.class)
 public class getErgast {
 
     @Test

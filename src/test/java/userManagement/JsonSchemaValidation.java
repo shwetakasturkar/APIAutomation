@@ -2,11 +2,12 @@ package userManagement;
 
 import core.BaseTest;
 import io.restassured.RestAssured;
+
 import io.restassured.module.jsv.JsonSchemaValidator;
 import org.testng.annotations.Test;
 import utils.ExtentReport;
 import utils.PropertyReader;
-
+import static io.restassured.module.jsv.JsonSchemaValidator.*;
 import java.io.File;
 import java.io.IOException;
 

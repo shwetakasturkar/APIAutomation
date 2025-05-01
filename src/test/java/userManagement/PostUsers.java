@@ -189,16 +189,19 @@ public class PostUsers {
         List<String> listOfLanguage = new ArrayList<>();
         listOfLanguage.add("Java");
         listOfLanguage.add("Python");
+
         PostRequestBody postReqBody = new PostRequestBody();
         postReqBody.setJob("leader");
         postReqBody.setName("morpheus");
         postReqBody.setLanguages(listOfLanguage);
+
         CityRequest DelhiCR = new CityRequest();
         DelhiCR.setName("Delhi");
         DelhiCR.setTemp("30.8");
         CityRequest BangloreCR = new CityRequest();
         BangloreCR.setName("Banglore");
         BangloreCR.setTemp("40");
+
         List<CityRequest> crst = new ArrayList<>();
         crst.add(DelhiCR);
         crst.add(BangloreCR);

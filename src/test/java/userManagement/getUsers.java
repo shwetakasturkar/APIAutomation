@@ -238,7 +238,7 @@ public class getUsers extends BaseTest {
 given()
         .param("id",id)
         .param("name",name)
-        .when().get("/endpoint").then()
+        .when().get("/endpoint").then().assertThat()
         .statusCode(200);
     }
 
