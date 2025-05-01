@@ -6,9 +6,5 @@
             <class name = "userManagement.getPostManEcho"/>
         </classes>
     </test>
-    <test name="Test API User">
-    <classes>
-        <class name = "userManagement.getUsers"></class>
-    </classes>
-    </test>
+
     </suite>

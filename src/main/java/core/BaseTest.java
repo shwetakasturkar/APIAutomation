@@ -1,55 +1,66 @@
 package core;
 
-import com.relevantcodes.extentreports.LogStatus;
+
+import com.aventstack.extentreports.Status;
 import helper.BaseTestHelper;
+import org.testng.ITestContext;
 import org.testng.ITestResult;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import utlis.ExtentReport;
+
 
 import java.io.IOException;
 
+
 public class BaseTest {
-
     @BeforeSuite(alwaysRun = true)
-    public void config(@Optional("Optional name Automation ") String reportname, @Optional("API Report") String flow)
-            throws IOException {
-
-        //Create the path in which we will create folder to keep html reports
-        String subfolderpath=System.getProperty("user.dir")+"/reports/"+ BaseTestHelper.Timestamp();
-        //create sub folder
+    public void config() throws IOException {
+        // Create the path for storing HTML reports
+        String subfolderpath = System.getProperty("user.dir") + "/reports/" + BaseTestHelper.Timestamp();
         BaseTestHelper.CreateFolder(subfolderpath);
 
-        ExtentReport.initialize(subfolderpath+"/"+"API_Automation.html");
+
+        // Initialize Extent Reports with report path
+        ExtentReport.initialize(subfolderpath + "/API_Execution_Automation.html", null);
     }
 
-    @BeforeMethod(alwaysRun = true)
-    public static void LogBeforeMethod() {
-        //final Logging log = Logging.getInstance();
-        System.out.println("Test Case Execution Started >>>>>>>>>>>>>>>>>>>>>>>");
 
-        //log.info("Test case", "*********************************************************************");
+    @BeforeMethod(alwaysRun = true)
+    public void setupTest(ITestContext context) {
+        // Create a new test entry for each test method
+        ExtentReport.createTest(context.getName());
     }
 
 
     @AfterMethod(alwaysRun = true)
-
     public void getResult(ITestResult result) {
-        if (result.getStatus() == ITestResult.SUCCESS) {
-            ExtentReport.extentlog.log(LogStatus.PASS, "Test Case : " + result.getName() + " is passed ");
-        } else if (result.getStatus() == ITestResult.FAILURE) {
-            ExtentReport.extentlog.log(LogStatus.FAIL, "Test case : " + result.getName() + " is failed ");
-            ExtentReport.extentlog.log(LogStatus.FAIL, "Test case is failed due to:  " + result.getThrowable());
-        } else if (result.getStatus() == ITestResult.SKIP) {
-            ExtentReport.extentlog.log(LogStatus.SKIP, "Test case is Skiped " + result.getName());
+        if (ExtentReport.getTest() == null) return;
+
+
+        switch (result.getStatus()) {
+            case ITestResult.SUCCESS:
+                ExtentReport.logPass("Test Case: " + result.getName() + " passed.");
+                break;
+
+
+            case ITestResult.FAILURE:
+                ExtentReport.logFail("Test Case: " + result.getName() + " failed.");
+                ExtentReport.logFail("Failure Reason: " + result.getThrowable());
+                break;
+
+
+            case ITestResult.SKIP:
+                ExtentReport.logInfo("Test Case: " + result.getName() + " was skipped.");
+                break;
         }
-        ExtentReport.extentreport.endTest(ExtentReport.extentlog);
     }
 
 
     @AfterSuite(alwaysRun = true)
     public void endReport() {
-        //ExtentReport.extentreport.flush();
-        ExtentReport.extentreport.close();
-        //Logging.setinstanceNull();
+        ExtentReport.flush();
     }
 }
